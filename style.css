@@ -1,0 +1,252 @@
+/* ePub-base 3.0 ePubLibre - style.css */
+
+/* Espacios de nombres. Puede borrar si no usará selectores epub:type, svg o MathML */
+@namespace epub "http://www.idpf.org/2007/ops";
+@namespace svg "http://www.w3.org/2000/svg";
+@namespace m "http://www.w3.org/1998/Math/MathML/";
+
+/* Definiciones en el body */
+body {
+/*  
+font-family: Cambria, Literata, Georgia, Bookerly, serif;
+*/
+/* Ejemplo con algunas fuentes OpenType de los lectores. Puede reemplazarse por fuentes incrustadas a gusto del editor. Quédará como fuente predeterminada para la "Selección del editor" */
+/*
+  font-variant-numeric: oldstyle-nums proportional-nums; 
+*/
+/* Estilo de cifras recomendado para el cuerpo principal del texto. Puede cambiar "oldstyle-nums" por "lining-nums" segun el contenido del libro. Tambien puede combinar con "proportional-nums" o "tabular-nums". Si desea que se use la opción por defecto de la fuente, borre esta definición. */
+}
+
+/* ESTILO DE PÁRRAFO POR DEFECTO
+
+Edite y habilite o deshabilite un estilo por defecto para el libro, o cree su propio estilo(s) de párrafo personalizado que se adapte al mismo. Recuerde que afectará a todo el contenido, exceptuando las páginas que no enlacen este CSS (como las fijas). Tambien puede crear uno propio que se ajuste a sus necesidades. IMPORTANTE: NO ASIGNE FUENTE POR DEFECTO NI TAMAÑO FIJO PARA <p>, debe permitirse que el lector escoja los más cómodos para su lectura */
+/* Estilo de párrafo normal, apto para novelas, relatos, ensayos, etc. */
+p {
+  text-indent: 1.5em;
+}
+
+/* Estilo de párrafo alemán o moderno. Apto para obras como manuales, obras de referencia, obras científicas o técnicas, etc. */
+/*
+p { 
+  margin: 1em 0; 
+  text-indent: 0;
+}
+*/
+/*** ESTILOS GENERALES. PUEDE ADAPTARLOS O BORRARLOS SI NO LOS USA ***/
+/*** Encabezados ***/
+h1 {
+  font-size: 1.5em;
+  margin: 15% 0 2em;
+}
+
+h2, h3, h4, h5, h6 {
+  margin: 2rem 0 1rem;
+}
+
+h2 {
+  font-size: 1.4em;
+}
+
+h3 {
+  font-size: 1.2em;
+}
+
+h4 {
+  font-size: 1.2em;
+}
+
+h5 {
+  font-size: 1.1em;
+}
+
+h6 {
+  font-size: 1em;
+}
+
+/*** Dedicatoria ***/
+.dedicatoria, .epigrafe1 {
+  margin: 25% 1% 0 25%;
+}
+
+.dedicatoria p {
+  text-align: right;
+  text-indent: 0;
+}
+
+@supports (max-width: 20em) {
+  .dedicatoria, .epigrafe1 {
+    max-width: 20em;
+    margin-left: auto;
+    padding-left: 10%;
+  }
+}
+
+/*** Imágenes simples ***/
+/* La etiqueta <figure> reemplaza a la clase ilustra, excepto para imágenes decorativas o que no deban moverse de sitio. Puede usarse con imágenes, gráficos, tablas, etc., sobre todo con texto al pie. Ajuste los márgenes u otro atributo a su gusto/necesidad. */
+figure, .ilustra {
+  margin: 1em 0;
+}
+
+/* Para el pie de imagen, en combinación con <figure>. Puede ir bajo o sobre el contenido del figure */
+figcaption, .piefoto {
+  font-size: 85%;
+  margin: 0.5em 0;
+}
+
+/*** Saltos ***/
+.sintop {
+  margin-top: 0;
+}
+
+.saltoinicio {
+  margin-top: 25%;
+}
+
+.salto05 {
+  padding-top: 0.5em;
+}
+
+.salto10 {
+  padding-top: 1em;
+}
+
+.salto25 {
+  padding-top: 2.5em;
+}
+
+/* El valor por defecto de <hr> es de 2.5 líneas en blanco para marcar saltos de contexto. Ajuste el valor de altura (height) a su conveniencia */
+hr {
+  height: 2.5em;
+}
+
+/* Las siguientes clases son ejemplos de variaciones para los saltos de contexto. Modifique atributos a su gusto */
+hr.linea {
+  width: 10%;
+  height: 0;
+  margin: 1em 45%;
+  border: none;
+  border-top: 0.125em solid gray;
+}
+
+hr.asterisco {
+  overflow: hidden;
+  width: auto;
+  height: 1em;
+  margin: 1em 0;
+  background: transparent url("../Images/asterisco.svg") no-repeat center;
+  background-size: 2.5em 1.25em;
+}
+
+/* Si el archivo para Kindle se convierte a AZW3 con Calibre no muestra los svg de fondo. Se asigna un png similar en su lugar */
+@media amzn-kf8 {
+  hr.asterisco {
+    background: transparent url("../Images/asterisco.png") no-repeat center;
+    background-size: 3em 1em;
+  }
+}
+
+/* incrustar una imagen en los hr */
+hr.imagen {
+  overflow: hidden;
+  width: auto;
+  height: 1em;
+  margin: 1em 0;
+  background: transparent url("../Images/separador.png") no-repeat center;
+  background-size: 5em 1em;
+}
+
+div.salto {
+  font-size: 1em;
+  margin: 1em 0;
+  page-break-after: avoid;
+  text-align: center;
+  text-indent: 0;
+}
+
+/* Llamadas pequeñas en encabezados */
+h1 > sup > a, h2> sup > a, h3 > sup >a {
+  font-size: 0.6em;
+}
+
+/* Equivale a aplicar la clase «asangre» a todos los elementos con las condiciones especificadas, por ejemplo los que van después de un título o salto de escena <hr>. Puede agregar otras clases o elementos a la lista */
+h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p, hr + p, blockquote + p, figure + p, ol + p, ul + p, table + p, header + p, dl + p {
+  text-indent: 0;
+}
+
+/******************* EJEMPLOS ADICIONALES *******************/
+/*** Pseudoelementos ***/
+/* Letra capitular. Sirve para epub y Kindle */
+span.capitular {
+  font-size: 3em;
+  float: left;
+  margin: -0.2em 0.05em -0.55em 0;
+}
+
+@supports (-webkit-initial-letter: 3) or (initial-letter: 3) {
+  span.capitular {
+    font-size: inherit;
+    float: none;
+    margin: inherit;
+  }
+
+  .vprimera::first-letter {
+    margin-right: 0.25em;
+    -webkit-initial-letter: 3;
+    initial-letter: 3;
+  }
+}
+
+/* Convierte la primera línea de un párrafo en versalitas */
+.vprimera::first-line, hr.asterisco + p::first-line {
+  font-variant: small-caps;
+  font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+/* Fracciones en diagonal */
+.fraccion {
+  font-variant-numeric: lining-nums diagonal-fractions;
+}
+
+/* Ejemplo del atributo border-radius para bordes curvados y box-shadow para sombras */
+.caja {
+  font-size: 85%;
+  margin: 1em 5% 1.5em;
+  padding: 10px;
+  border: 0.125em solid silver;
+  border-radius: 10px;
+  box-shadow: 0 4px 5px silver;
+}
+
+.caja img {
+  border-radius: 5px;
+}
+
+/*** Poemas/canciones ***/
+.poema {
+  margin: 1em 5%;
+  font-size: 90%;
+}
+
+/* estrofas */
+.poema p.estrofa {
+  text-indent: 0;
+  text-align: left;
+  margin: 0 0 1em 1.5em;
+}
+
+/* versos */
+.poema span.verso {
+  margin-left: -1.5em;
+}
+
+/* Bloquear silabeo. Asegúrese de agregar cada clase que no deba dividirse con guiones (subtítulos, versos, etc.) */
+.dedicatoria p, .poema p {
+  adobe-hyphenate: none !important;
+  -webkit-hyphens: none !important;
+  -epub-hyphens: none !important;
+  hyphens: none !important;
+}
+
+/*** CLASES EXCLUSIVAS PARA KINDLE ***/
+/* Ponga aquí las clases exclusivas para los Kindle. NUNCA deje esta media query vacía, preferible borrar si no se va a usar */
+/* @media amzn-kf8 {aquí sus clases} */
