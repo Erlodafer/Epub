@@ -1,0 +1,45 @@
+/* ePub-base 3.0 ePubLibre - sgc-toc.css */
+a[href="cubierta.xhtml"], a[href="titulo.xhtml"] {
+  display: none;
+}
+
+div.sgc-toc-title {
+  font-size: 1.1em;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  text-align: center;
+}
+
+div.sgc-toc-level-1 {
+  font-variant-numeric: lining-nums;
+  margin-bottom: 0.5em;
+  margin-left: 1.5em;
+  text-indent: -1.5em;
+  text-align: left;
+}
+
+div.sgc-toc-level-2 {
+  margin-left: 1em;
+}
+
+div.sgc-toc-level-3 {
+  margin-left: 1em;
+}
+
+div.sgc-toc-level-4 {
+  margin-left: 2em;
+}
+
+div.sgc-toc-level-5 {
+  margin-left: 2em;
+}
+
+div.sgc-toc-level-6 {
+  margin-left: 2em;
+}
+
+/* Borre el bloque siguiente si quiere presentar el índice como enlaces */
+a {
+  color: inherit;
+  text-decoration: none;
+}
